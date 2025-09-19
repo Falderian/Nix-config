@@ -101,16 +101,8 @@
     set constantshow 
     set historylog
     set smarthome
-    set positionlog         
+    set positionlog
     set boldtext
-    set titlecolor brightmagenta,black      # Заголовок — ярко-фиолетовый на черном фоне (iris spring)
-    set statuscolor brightwhite,magenta     # Статусбар — ярко-белый текст на пурпурном фоне (iris spring)
-    set numbercolor brightwhite,black       # Номера строк — ярко-белый на черном фоне (читаемые)
-    set selectedcolor black,brightmagenta   # Выделение — черный текст на ярко-фиолетовом фоне (акцент)
-    set keycolor brightblue,black           # Клавиши — яркий бирюзовый на черном (близко к Breezze)
-    set functioncolor brightmagenta,black   # Функции — ярко-фиолетовый на черном
-    set errorcolor brightwhite,red          # Ошибки — ярко-белый на красном (стандартно выделяет)
-    set stripecolor black,brightwhite       # Полосы — черный на ярко-белом (контраст)
 	'';
 	
 	programs.bash.shellAliases = {
