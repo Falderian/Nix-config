@@ -11,6 +11,9 @@
       ./common.nix
     ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "pcie_aspm=off" "amdgpu.aspm=0"];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

@@ -1,15 +1,11 @@
-	# /etc/nixos/pc.nix
+# /etc/nixos/common.nix
 { config, pkgs, ... }:
 
-{
-  
+{  
   # Bootloader.
-	boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
-  
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "pcie_aspm=off" "amdgpu.aspm=0"];
 
   #virtualisation.libvirtd.enable = true;
   
@@ -26,8 +22,9 @@
     google-chrome
     gurk-rs
     celluloid
+    micro
 
-		#gnome-boxes
+    #gnome-boxes
     #foot
     #waybar
     #hyprpaper
@@ -94,10 +91,16 @@
     rubik
     nerd-fonts.jetbrains-mono
   ];
+
+  environment.etc."nanorc".text = ''
+  	set tabsize 2
+  	set tabstospaces
+	'';
   
-  programs.bash.shellAliases = {
+	programs.bash.shellAliases = {
     start-vpn="openvpn3 session-start --config ~/Projects/Synchrony/client.ovpn";
     start-synchrony="(cd ~/Projects/Synchrony/ui && npm run start:standalone) & (cd ~/Projects/Synchrony/IMS/Pharo11_dev && pharo --headless smt-base.image --script ../resources_project/SMT/scripts/start-ana>";
+		edit-common="micro /etc/nixos/common.nix";
+		edit-config="micro /etc/nixos/configuration.nix";
   };
-
 }
