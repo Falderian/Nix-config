@@ -6,4 +6,6 @@ konsave -e purple
 
 git add .
 git commit -m "update"
-git push origin 
+git push origin
+
+rm purple.knsv
