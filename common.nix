@@ -7,7 +7,7 @@
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.systemd-boot.configurationLimit = 5;
 
-	virtualisation.libvirtd.enable = true;
+#	virtualisation.libvirtd.enable = true;
 	
 	environment.systemPackages = with pkgs; [
 		openvpn3
@@ -23,8 +23,9 @@
 		gurk-rs
 		celluloid
 		konsave
+		parallel
 				
-		gnome-boxes
+#		gnome-boxes
 		#foot
 		#waybar
 		#hyprpaper
@@ -110,12 +111,10 @@
 		edit-common="nano -l /etc/nixos/common.nix";
 		start-vpn="openvpn3 session-start --config ~/Projects/Synchrony/client.ovpn";
 		start-synchrony = ''
-		  (cd ~/Projects/Synchrony/ui && npm run start:standalone) & \
-		  (cd ~/Projects/Synchrony/IMS/Pharo11_dev && \
-		   pharo --headless smt-base.image \
-		         --script ../resources_project/SMT/scripts/start-analytics-server.st \
-		         -- workspace=IMS) & \
-		  wait
+      parallel ::: \
+        "(cd $HOME/Projects/Synchrony/ui && npm run start:standalone)" \
+        "(cd $HOME/Projects/Synchrony/PFC/automation/local/ && \
+          ./start-analytics-server.sh $HOME/Projects/Synchrony/Pharo11_dev $HOME/Projects/Synchrony/Pharo10_image PFC 8080)"
 		'';
 	};
 }
