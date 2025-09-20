@@ -7,7 +7,7 @@
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.systemd-boot.configurationLimit = 5;
 
-	#virtualisation.libvirtd.enable = true;
+	virtualisation.libvirtd.enable = true;
 	
 	environment.systemPackages = with pkgs; [
 		openvpn3
@@ -24,7 +24,7 @@
 		celluloid
 		konsave
 				
-		#gnome-boxes
+		gnome-boxes
 		#foot
 		#waybar
 		#hyprpaper
@@ -76,7 +76,7 @@
 	services.resolved.enable = true;
 	programs.openvpn3.enable = true;
 	programs.starship.enable = true;
-
+  programs.nix-ld.enable = true;
 	hardware.bluetooth = {
 		enable = true;
 		powerOnBoot = true;
