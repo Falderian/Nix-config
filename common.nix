@@ -2,9 +2,6 @@
 { config, pkgs, ... }:
 
 {	
-	# Bootloader.
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
 	boot.loader.systemd-boot.configurationLimit = 5;
 
 #	virtualisation.libvirtd.enable = true;
@@ -18,12 +15,11 @@
 		pharo
 		git
 		vscodium	
-		viber
+	  viber
 		google-chrome
 		gurk-rs
 		celluloid
 		konsave
-		parallel
 				
 #		gnome-boxes
 		#foot
@@ -111,10 +107,15 @@
 		edit-common="nano -l /etc/nixos/common.nix";
 		start-vpn="openvpn3 session-start --config ~/Projects/Synchrony/client.ovpn";
 		start-synchrony = ''
-      parallel ::: \
-        "(cd $HOME/Projects/Synchrony/ui && npm run start:standalone)" \
-        "(cd $HOME/Projects/Synchrony/PFC/automation/local/ && \
-          ./start-analytics-server.sh $HOME/Projects/Synchrony/Pharo11_dev $HOME/Projects/Synchrony/Pharo10_image PFC 8080)"
+		(
+      cd "$HOME/Projects/Synchrony/PFC/automation/local/" \
+      && ./start-analytics-server.sh "$HOME/Projects/Synchrony/Pharo11_dev" "$HOME/Projects/Synchrony/Pharo10_image" PFC 8080
+    ) &
+    (
+      cd "$HOME/Projects/Synchrony/ui" \
+      && npm run start:standalone
+    ) &
+    wait
 		'';
 	};
 }
