@@ -19,7 +19,7 @@
 		google-chrome
 		gurk-rs
 		celluloid
-		konsave
+		konsave 
 				
 #		gnome-boxes
 		#foot
@@ -74,6 +74,7 @@
 	programs.openvpn3.enable = true;
 	programs.starship.enable = true;
   programs.nix-ld.enable = true;
+  
 	hardware.bluetooth = {
 		enable = true;
 		powerOnBoot = true;
@@ -103,8 +104,8 @@
 	'';
 	
 	programs.bash.shellAliases = {
-		edit-config="nano -l /etc/nixos/configuration.nix";
-		edit-common="nano -l /etc/nixos/common.nix";
+		edit-config="sudo nano /etc/nixos/configuration.nix";
+		edit-common="sudo nano /etc/nixos/common.nix";
 		start-vpn="openvpn3 session-start --config ~/Projects/Synchrony/client.ovpn";
 		start-synchrony = ''
 		(
