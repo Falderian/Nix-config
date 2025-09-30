@@ -23,5 +23,6 @@
     nordzy-icon-theme
     whitesur-gtk-theme
     posy-cursors
+    gnome-color-manager
   ];
 }
