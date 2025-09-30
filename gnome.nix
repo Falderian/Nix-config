@@ -17,13 +17,11 @@
     kitty
     btop-rocm
     gnome-tweaks
-    colloid-gtk-theme
-    colloid-icon-theme
     yaziPlugins.nord
     yazi
     gnomeExtensions.soft-brightness-plus
-    capitaine-cursors
     nordzy-icon-theme
-    kanagawa-icon-theme
+    whitesur-gtk-theme
+    posy-cursors
   ];
 }

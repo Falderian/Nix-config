@@ -2,7 +2,8 @@
 { config, pkgs, ... }:
 
 {
-  services.displayManager.ly.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -35,4 +36,4 @@
     nwg-look
     gurk-rs
   ];
-};
+}
