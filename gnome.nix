@@ -14,15 +14,12 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.vitals
-    #gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.status-icons
+    gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.top-panel-notification-icons-w-count
     btop-rocm
-    gnome-tweaks
     gnomeExtensions.soft-brightness-plus
-    nordzy-icon-theme
-    nordic
-    posy-cursors    
     nautilus
+    arc-theme
+    arc-icon-theme
   ];
 }
