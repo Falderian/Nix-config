@@ -12,18 +12,17 @@
   services.xserver.excludePackages = with pkgs; [ xterm ];
   environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs xterm];
 
-  programs.yazi.enable = true;
-  
   environment.systemPackages = with pkgs; [
     gnomeExtensions.vitals
-    gnomeExtensions.tray-icons-reloaded
-    kitty
+    #gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.status-icons
+    gnomeExtensions.top-panel-notification-icons-w-count
     btop-rocm
     gnome-tweaks
-    yaziPlugins.nord
     gnomeExtensions.soft-brightness-plus
     nordzy-icon-theme
-    whitesur-gtk-theme
-    posy-cursors
+    nordic
+    posy-cursors    
+    nautilus
   ];
 }
