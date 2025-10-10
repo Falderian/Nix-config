@@ -18,6 +18,5 @@
     kwallet
     kmenuedit
     okular
-    konsole
   ];
  }

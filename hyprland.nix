@@ -13,6 +13,7 @@
   programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
+    unstable.hyprland
     foot
     waybar
     hyprpaper

@@ -17,6 +17,7 @@
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.top-panel-notification-icons-w-count
     btop-rocm
+    gnome-terminal
     gnomeExtensions.soft-brightness-plus
     nautilus
     arc-theme

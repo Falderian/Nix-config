@@ -17,7 +17,6 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "pcie_aspm=off" "amdgpu.aspm=0"];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -33,8 +32,11 @@
   time.timeZone = "Europe/Minsk";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "ru_RU.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
+  };
+  
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -69,7 +71,10 @@
   programs.firefox.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

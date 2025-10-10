@@ -3,9 +3,9 @@
 
 {	
   imports = [
-    ./gnome.nix
+    #./gnome.nix
     #./hyprland.nix
-    #./kde.nix
+    ./kde.nix
   ];
 
   
@@ -26,7 +26,6 @@
 		brave
 		gurk-rs
 		celluloid
-		kitty
 	];
 
 	services.resolved.enable = true;
