@@ -1,0 +1,3 @@
+theme = "custom_kanagawa"
+[keys.normal]
+C-s = ":write" # Ctrl and 's' to write
