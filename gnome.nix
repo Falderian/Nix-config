@@ -2,25 +2,25 @@
 { config, pkgs, ... }:
 
 {
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   services.gnome.core-apps.enable = false;
   services.gnome.core-developer-tools.enable = false;
   services.gnome.games.enable = false;
-  services.xserver.excludePackages = with pkgs; [ xterm ];
   environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs xterm];
 
   environment.systemPackages = with pkgs; [
+    gnomeExtensions.appindicator
     gnomeExtensions.vitals
-    gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.top-panel-notification-icons-w-count
+    gnomeExtensions.soft-brightness-plus
+    gnomeExtensions.media-controls
     btop-rocm
     gnome-terminal
-    gnomeExtensions.soft-brightness-plus
+    zafiro-icons
+    adw-gtk3
     nautilus
-    arc-theme
-    arc-icon-theme
+    wl-clipboard
   ];
 }

@@ -3,9 +3,9 @@
 
 {	
   imports = [
-    #./gnome.nix
+    ./gnome.nix
     #./hyprland.nix
-    ./kde.nix
+    #./kde.nix
   ];
 
   
@@ -22,10 +22,23 @@
 		pharo
 		git
 		vscodium	
-	  viber
+	 	#viber
 		brave
 		gurk-rs
 		celluloid
+		floorp-bin
+		javaPackages.compiler.temurin-bin.jdk-25
+		steam-run
+
+		nixd
+		nixfmt-tree
+		wineWowPackages.stableFull
+		winetricks
+
+		helix
+		typescript
+		typescript-language-server
+		biome
 	];
 
 	services.resolved.enable = true;
@@ -44,7 +57,7 @@
 	};
 
 	fonts.packages = with pkgs; [
-		rubik
+  	roboto-flex
 		nerd-fonts.jetbrains-mono
 	];
 
@@ -61,12 +74,12 @@
     set boldtext
 	'';
 	
-	programs.bash.shellAliases = {
-		edit-config="sudo nano /etc/nixos/configuration.nix";
-		edit-common="sudo nano /etc/nixos/common.nix";
-		edit-gnome="sudo nano /etc/nixos/gnome.nix";
-    edit-kde="sudo nano /etc/nixos/kde.nix";
-    edit-hyprland="sudo nano /etc/nixos/hyprland.nix";
+	programs.bash.shellAliases = {  
+		edit-config="sudo hx /etc/nixos/configuration.nix";
+		edit-common="sudo hx /etc/nixos/common.nix";
+		edit-gnome="sudo hx /etc/nixos/gnome.nix";
+    edit-kde="sudo hx /etc/nixos/kde.nix";
+    edit-hyprland="sudo hx /etc/nixos/hyprland.nix";
 		start-vpn="openvpn3 session-start --config ~/Projects/Synchrony/client.ovpn";
 		start-synchrony = ''
 		(
@@ -81,3 +94,4 @@
 		'';
 	};
 }
+
