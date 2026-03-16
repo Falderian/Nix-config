@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./common.nix
+	    ./common.nix
     ];
 
   # Bootloader.
@@ -31,16 +31,20 @@
   # Set your time zone.
   time.timeZone = "Europe/Minsk";
 
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "ru_RU.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
   };
 
-  
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
+    enable32Bit = true; # Важно для Wine/Steam
   };
+
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -66,6 +70,7 @@
     isNormalUser = true;
     description = "admin";
     extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
   };
 
   # Allow unfree packages
@@ -73,10 +78,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
+  environment.systemPackages = with pkgs; [];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
