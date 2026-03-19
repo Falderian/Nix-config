@@ -1,5 +1,5 @@
 # /etc/nixos/hyprland.nix
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   services.displayManager.sddm.enable = true;
@@ -13,7 +13,7 @@
   programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
-    unstable.hyprland
+    hyprland
     foot
     waybar
     hyprpaper
@@ -25,8 +25,7 @@
     swaynotificationcenter
     btop-rocm
     yazi
-    capitaine-cursors
-    rofi-wayland
+    wayland
     bluetuith
     playerctl
     wl-clipboard
@@ -35,6 +34,7 @@
     bash-completion
     wl-clip-persist
     nwg-look
-    gurk-rs
+    rofi
+    glib
   ];
 }

@@ -1,14 +1,13 @@
 # /etc/nixos/kde.nix
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-
-{ 
+{
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kwalletmanager
-    dolphin   
+    dolphin
     elisa
     ark
     gwenview
@@ -19,4 +18,8 @@
     kmenuedit
     okular
   ];
- }
+
+  environment.systemPackages = with pkgs; [
+    kdePackages.plasma-workspace-wallpapers
+  ];
+}

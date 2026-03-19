@@ -3,13 +3,17 @@
 
 {
   imports = [
-    ./gnome.nix
-    #./hyprland.nix
-    #./kde.nix
+    # ./gnome.nix
+    # ./hyprland.nix
+    ./kde.nix
   ];
 
   boot.loader.systemd-boot.configurationLimit = 2;
   #	virtualisation.libvirtd.enable = true;
+
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball "https://github.com/oskardotglobal/.dotfiles/archive/nix.tar.gz"))
+  ];
 
   environment.systemPackages = with pkgs; [
     openvpn3
@@ -36,6 +40,11 @@
     helix
     nixfmt
     nixd
+
+    zip
+    unzip
+
+    capitaine-cursors-themed
   ];
 
   services.resolved.enable = true;
