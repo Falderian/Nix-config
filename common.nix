@@ -78,6 +78,7 @@
       options = "--delete-older-than 3d";
     };
   };
+  services.fstrim.enable = true;
 
   environment.etc."nanorc".text = ''
         set linenumbers
