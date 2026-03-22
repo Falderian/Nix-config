@@ -2,14 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-	    ./common.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./common.nix
+    ./pc.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -17,6 +18,10 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -39,12 +44,6 @@
     layout = "us";
     variant = "";
   };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true; # Важно для Wine/Steam
-  };
-
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -69,8 +68,12 @@
   users.users.admin = {
     isNormalUser = true;
     description = "admin";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "podman"
+      "networkmanager"
+      "wheel"
+    ];
+    # packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -78,7 +81,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [];
+  # environment.systemPackages = with pkgs; [ ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

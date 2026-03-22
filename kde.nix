@@ -7,7 +7,6 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kwalletmanager
-    dolphin
     elisa
     ark
     gwenview
@@ -20,6 +19,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    kdePackages.plasma-workspace-wallpapers
+    # kdePackages.plasma-workspace-wallpapers
   ];
 }

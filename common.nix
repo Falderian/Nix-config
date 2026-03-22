@@ -24,17 +24,15 @@
     git
     vscodium
     #viber
-    brave
     celluloid
     floorp-bin
-    wineWowPackages.stableFull
-    winetricks
+    faugus-launcher
 
     typescript
     vtsls
     biome
     p7zip
-    # telegram-desktop
+    telegram-desktop
     ncdu
 
     helix
@@ -45,9 +43,11 @@
     unzip
 
     capitaine-cursors-themed
+    adwaita-fonts
+
+    kdiskmark
   ];
 
-  services.resolved.enable = true;
   programs.openvpn3.enable = true;
   programs.starship.enable = true;
   programs.nix-ld.enable = true;
@@ -63,14 +63,15 @@
   };
 
   fonts.packages = with pkgs; [
-    roboto-flex
     nerd-fonts.jetbrains-mono
   ];
 
   boot.tmp.useTmpfs = true;
 
   nix = {
-    settings.auto-optimise-store = true;
+    settings = {
+      auto-optimise-store = true;
+    };
     gc = {
       automatic = true;
       dates = "00/3";
