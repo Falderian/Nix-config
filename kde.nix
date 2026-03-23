@@ -9,7 +9,7 @@
     kwalletmanager
     elisa
     ark
-    gwenview
+    # gwenview
     kinfocenter
     khelpcenter
     kate
@@ -20,5 +20,6 @@
 
   environment.systemPackages = with pkgs; [
     # kdePackages.plasma-workspace-wallpapers
+    kdePackages.sddm-kcm
   ];
 }

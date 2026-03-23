@@ -10,6 +10,7 @@
       defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
     };
   };
+
   networking.networkmanager = {
     enable = true;
     dns = "systemd-resolved"; # Key: NM hands DNS to resolved
@@ -42,4 +43,15 @@
     '';
   };
 
+  # Gaming
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  programs.gamemode.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    mangohud # On-screen FPS/Temperature overlay
+  ];
 }

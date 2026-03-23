@@ -42,10 +42,13 @@
     zip
     unzip
 
-    capitaine-cursors-themed
-    adwaita-fonts
+    wl-clipboard
 
     kdiskmark
+    ntfs3g
+
+    roboto-flex
+
   ];
 
   programs.openvpn3.enable = true;
@@ -97,6 +100,7 @@
     rebuild = "sudo nixos-rebuild switch && nix-collect-garbage -d";
     edit-config = "sudo hx /etc/nixos/configuration.nix";
     edit-common = "sudo hx /etc/nixos/common.nix";
+    edit-pc = "sudo hx /etc/nixos/pc.nix";
     edit-gnome = "sudo hx /etc/nixos/gnome.nix";
     edit-kde = "sudo hx /etc/nixos/kde.nix";
     edit-hyprland = "sudo hx /etc/nixos/hyprland.nix";
