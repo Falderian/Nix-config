@@ -46,9 +46,6 @@
 
     kdiskmark
     ntfs3g
-
-    roboto-flex
-
   ];
 
   programs.openvpn3.enable = true;
@@ -65,9 +62,32 @@
     };
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      inter
+    ];
+
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMono Nerd Font" ];
+        sansSerif = [ "Inter" ];
+        serif = [ "Inter" ];
+      };
+      hinting = {
+        enable = true;
+        autohint = false;
+        style = "medium";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default"; # <-- исправлено
+      };
+      antialias = true;
+      useEmbeddedBitmaps = false;
+    };
+  };
 
   boot.tmp.useTmpfs = true;
 
@@ -105,6 +125,7 @@
     edit-kde = "sudo hx /etc/nixos/kde.nix";
     edit-hyprland = "sudo hx /etc/nixos/hyprland.nix";
     start-vpn = "openvpn3 session-start --config ~/Projects/Synchrony/client.ovpn";
+    start-ovpn = "openvpn3 session-start --config ~/Projects/Synchrony/profile-userlocked.ovpn";
     start-synchrony = ''
       		(
             cd "$HOME/Projects/Synchrony/PFC/automation/local/" \
